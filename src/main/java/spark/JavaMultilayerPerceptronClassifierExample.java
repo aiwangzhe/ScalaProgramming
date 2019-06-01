@@ -22,6 +22,7 @@ package spark;
 import org.apache.spark.ml.classification.MultilayerPerceptronClassificationModel;
 import org.apache.spark.ml.classification.MultilayerPerceptronClassifier;
 import org.apache.spark.ml.evaluation.MulticlassClassificationEvaluator;
+import org.apache.spark.ml.linalg.*;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
@@ -38,6 +39,7 @@ public class JavaMultilayerPerceptronClassifierExample {
       .appName("JavaMultilayerPerceptronClassifierExample")
       .master("local[2]")
       .getOrCreate();
+
 
     // $example on$
     // Load training data

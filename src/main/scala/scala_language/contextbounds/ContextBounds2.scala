@@ -1,4 +1,4 @@
-package scala_language.contextbounds
+package scala_language.contextbounds2
 
 /** 上下文界定
   * author: leisu

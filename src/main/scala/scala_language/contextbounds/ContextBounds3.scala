@@ -1,4 +1,4 @@
-package scala_language.contextbounds
+package scala_language.contextbounds3
 
 /**
   * 封装原方法的类，可以看到这里有一个类型参数U，并且我们的方法带上类型参数，可用度更加广了

@@ -13,10 +13,10 @@ public class JavaWordCountByHDFS {
 
     public static void main(String[] args){
         SparkConf sparkConf = new SparkConf().setAppName("JavaWordCount")
-                .setMaster("local");
+                .setMaster("spark://node1:7077");
         JavaSparkContext jsc = new JavaSparkContext(sparkConf);
 
-        JavaRDD<String> lines = jsc.textFile(args[0], 1);
+        JavaRDD<String> lines = jsc.textFile("/dataset/wikidata", 1);
         JavaRDD<String> words = lines.flatMap(str -> {
             return Arrays.asList(str.split(" ")).iterator();
         });
@@ -27,11 +27,11 @@ public class JavaWordCountByHDFS {
 
         counts.saveAsTextFile("/tmp/WordCount");
 
-        List<Tuple2<String, Integer>> output = counts.collect();
-
-        output.forEach(tuple2 -> {
-            System.out.println("tuple2: " + tuple2);
-        });
+//        List<Tuple2<String, Integer>> output = counts.collect();
+//
+//        output.forEach(tuple2 -> {
+//            System.out.println("tuple2: " + tuple2);
+//        });
 
         jsc.stop();
     }
