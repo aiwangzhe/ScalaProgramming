@@ -24,10 +24,21 @@
 //compile this along with ../compo-inherit/LayoutElement.scala
 
 import layout.Element
-import Element.elem
-
-
 import org.stairwaybook.expr._
+
+class AAA(val i1: Int, val s1: String) {
+
+
+}
+
+object AAA {
+
+  //def apply(i1: Int, s1: String): AAA = new AAA(i1, s1)
+
+  def unapply(arg: AAA): Option[(Int, String)] = {
+    Some((arg.i1, arg.s1))
+  }
+}
 
 object Express extends App {
 
@@ -42,6 +53,17 @@ object Express extends App {
   def show(e: Expr) = println(f.format(e)+ "\n\n")
 
   for (e <- Array(e1, e2, e3)) show(e)
+
+
+  def constructorMatch(obj: AnyRef): Unit = {
+    obj match {
+      case AAA(s1) => println()
+    }
+  }
+
+  override def main(args: Array[String]): Unit = {
+
+  }
 }
 
 
