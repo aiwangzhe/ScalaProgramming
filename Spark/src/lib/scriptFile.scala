@@ -1,0 +1,1 @@
+hive-jdbc-2.3.6-standalone.jar
