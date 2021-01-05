@@ -1,7 +1,13 @@
 package com.wangzhe.spark
 
 import org.apache.spark.SparkContext
-import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.{Dataset, Encoder, Encoders, SparkSession}
+
+class Store(val s_city: String, val s_county: Int) {
+  def this() {
+    this(null, 0)
+  }
+}
 
 object SparkConnToHive {
 
@@ -9,10 +15,25 @@ object SparkConnToHive {
     val spark = SparkSession
       .builder()
       .appName("Spark Hive Example")
-      .master("yarn")
+      .config("spark.sql.warehouse.dir", "/apps/hive/warehouse")
+      .enableHiveSupport()
       .getOrCreate()
 
-    val reader = spark.read.csv("hdfs://node2.leap.com:8082/apps/hive/warehouse/mydb.db/test")
-    print(reader.rdd.count())
+    implicit val encoder: Encoder[Store] = Encoders.bean(classOf[Store])
+
+    val df = spark.sql("select s_city, s_country from mytest.store")
+    val dataset: Dataset[Store] = df.as
+    println("---------------start count-----------------------")
+    dataset.rdd.count()
+    println("count: " + dataset.count())
+    dataset.rdd.map(store => {
+      val country = store.s_county
+      val city = store.s_city
+      println("country: " + country)
+      println("city: " + city)
+      ((country, city), 1)
+    }).reduceByKey(_ + _).foreach(tuple2 => {
+      println(tuple2._1 + "-----------" + tuple2._2)
+    })
   }
 }

@@ -13,7 +13,7 @@ object Stringutils {
 class Test{
   def receive: PartialFunction[Any, Unit] = {
     case Int => print("it is int")
-    case _ => print("unknown"￿￿￿)￿
+    case _ => print("unknown")
   }
 }
 

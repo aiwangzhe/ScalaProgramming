@@ -15,8 +15,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-<!--        <build.scope>compile</build.scope>-->
-        <build.scope>provided</build.scope>
+        <hadoop.version>2.6.5</hadoop.version>
+        <build.scope>compile</build.scope>
+<!--        <build.scope>provided</build.scope>-->
     </properties>
 
     <dependencies>
@@ -51,14 +52,14 @@
         <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-client</artifactId>
-            <version>3.1.1</version>
+            <version>${hadoop.version}</version>
             <scope>${build.scope}</scope>
         </dependency>
 
         <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-common</artifactId>
-            <version>3.1.1</version>
+            <version>${hadoop.version}</version>
             <scope>${build.scope}</scope>
         </dependency>
 

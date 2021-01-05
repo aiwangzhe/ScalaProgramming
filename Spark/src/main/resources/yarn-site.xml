@@ -7,7 +7,7 @@
     
     <property>
       <name>hadoop.registry.zk.quorum</name>
-      <value>node1.leap.com:2181,node2.leap.com:2181,node3.leap.com:2181</value>
+      <value>test-server:2181,node2.leap.com:2181,node3.leap.com:2181</value>
     </property>
     
     <property>
@@ -257,12 +257,12 @@
     
     <property>
       <name>yarn.resourcemanager.address</name>
-      <value>node1.leap.com:8032</value>
+      <value>test-server:8032</value>
     </property>
     
     <property>
       <name>yarn.resourcemanager.admin.address</name>
-      <value>node1.leap.com:8141</value>
+      <value>test-server:8141</value>
     </property>
     
     <property>
@@ -302,7 +302,7 @@
     
     <property>
       <name>yarn.resourcemanager.hostname</name>
-      <value>node1.leap.com</value>
+      <value>test-server</value>
     </property>
     
     <property>
@@ -317,12 +317,12 @@
     
     <property>
       <name>yarn.resourcemanager.resource-tracker.address</name>
-      <value>node1.leap.com:8031</value>
+      <value>test-server:8031</value>
     </property>
     
     <property>
       <name>yarn.resourcemanager.scheduler.address</name>
-      <value>node1.leap.com:8030</value>
+      <value>test-server:8030</value>
     </property>
     
     <property>
@@ -357,7 +357,7 @@
     
     <property>
       <name>yarn.resourcemanager.webapp.address</name>
-      <value>node1.leap.com:8088</value>
+      <value>test-server:8088</value>
     </property>
     
     <property>
@@ -367,7 +367,7 @@
     
     <property>
       <name>yarn.resourcemanager.webapp.https.address</name>
-      <value>node1.leap.com:8090</value>
+      <value>test-server:8090</value>
     </property>
     
     <property>
@@ -387,7 +387,7 @@
     
     <property>
       <name>yarn.resourcemanager.zk-address</name>
-      <value>node1.leap.com:2181,node2.leap.com:2181,node3.leap.com:2181</value>
+      <value>test-server:2181,node2.leap.com:2181,node3.leap.com:2181</value>
     </property>
     
     <property>
@@ -447,7 +447,7 @@
     
     <property>
       <name>yarn.timeline-service.address</name>
-      <value>node1.leap.com:10200</value>
+      <value>test-server:10200</value>
     </property>
     
     <property>
@@ -582,12 +582,12 @@
     
     <property>
       <name>yarn.timeline-service.webapp.address</name>
-      <value>node1.leap.com:8188</value>
+      <value>test-server:8188</value>
     </property>
     
     <property>
       <name>yarn.timeline-service.webapp.https.address</name>
-      <value>node1.leap.com:8190</value>
+      <value>test-server:8190</value>
     </property>
     
   </configuration>
