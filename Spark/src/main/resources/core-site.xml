@@ -17,7 +17,7 @@
     
     <property>
       <name>fs.defaultFS</name>
-      <value>hdfs://test-server:8020</value>
+      <value>hdfs://m5.leap.com:8020</value>
       <final>true</final>
     </property>
     
