@@ -16,6 +16,5 @@ object DataSkewTest {
     val sc = SparkContext.getOrCreate(sparkConf)
     var list = List(("hello", 1))
     val context = new StreamingContext(sc, Seconds(1000));
-    context.socketStream()
   }
 }
