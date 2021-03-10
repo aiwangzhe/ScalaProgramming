@@ -21,10 +21,12 @@ case class Student(userId: Int, username: String, age: Int, sex: String, address
                    phone: Int, favorite: String, gradeId: Int, classId: Int,
                    height: Double, weight: Double)
 
+case class People(userId: Int, name: String)
+
 object SparkConnToHive {
 
   def main(args: Array[String]): Unit = {
-    val spark = SparkSession
+    val session = SparkSession
       .builder()
       .appName("Spark Hive Example")
       .config("spark.sql.warehouse.dir", "/apps/hive/warehouse")
@@ -33,45 +35,47 @@ object SparkConnToHive {
       .enableHiveSupport()
       .getOrCreate()
 
-//    implicit val encoder: Encoder[Ratings] = Encoders.bean(classOf[Ratings])
+    session.sql("create table test2.people(id Int, name string) stored as kudu")
 
-//    val dataList: MutableList[Ratings] = MutableList()
+////    implicit val encoder: Encoder[Ratings] = Encoders.bean(classOf[Ratings])
+//
+////    val dataList: MutableList[Ratings] = MutableList()
+////    val random = new Random()
+////    for (i <- 1 to 100000) {
+////      dataList += Ratings(i, i+2, random.nextDouble(), System.currentTimeMillis())
+////    }
+//
+//    implicit val encoder: Encoder[Student] = Encoders.bean(classOf[Student])
+//
+//    val dataList: mutable.MutableList[Student] = mutable.MutableList()
 //    val random = new Random()
-//    for (i <- 1 to 100000) {
-//      dataList += Ratings(i, i+2, random.nextDouble(), System.currentTimeMillis())
+//    for(i <- 1 to 100000) {
+//      val name = RandomStringUtils.randomAlphanumeric(10)
+//      val sex = if (random.nextDouble() < 0.5) "F" else "M"
+//      val address = RandomStringUtils.randomAlphanumeric(80)
+//      val phone = random.nextInt(1345678932)
+//      val favorite = RandomStringUtils.randomAlphanumeric(40)
+//      val gradeId = random.nextInt(20)
+//      val classId = random.nextInt(10)
+//      val height = random.nextDouble() * 200
+//      val weight = random.nextDouble() * 100
+//      dataList += Student(i, name, random.nextInt(100),
+//        sex, address, phone, favorite, gradeId, classId, height, weight)
 //    }
-
-    implicit val encoder: Encoder[Student] = Encoders.bean(classOf[Student])
-
-    val dataList: mutable.MutableList[Student] = mutable.MutableList()
-    val random = new Random()
-    for(i <- 1 to 100000) {
-      val name = RandomStringUtils.randomAlphanumeric(10)
-      val sex = if (random.nextDouble() < 0.5) "F" else "M"
-      val address = RandomStringUtils.randomAlphanumeric(80)
-      val phone = random.nextInt(1345678932)
-      val favorite = RandomStringUtils.randomAlphanumeric(40)
-      val gradeId = random.nextInt(20)
-      val classId = random.nextInt(10)
-      val height = random.nextDouble() * 200
-      val weight = random.nextDouble() * 100
-      dataList += Student(i, name, random.nextInt(100),
-        sex, address, phone, favorite, gradeId, classId, height, weight)
-    }
-
-    spark.createDataFrame(dataList).createOrReplaceTempView("ratings_temp")
-    //spark.sql("select * from ratings_temp").show()
-    spark.sql("insert into test2.student select * from ratings_temp")
-
-
-    import spark.implicits._
-
-    val data = List(Ratings(2, 4, 3.0, 12322343))
-    val dsData = spark.createDataset(data)
-    //dsData.rdd.foreach(ratings => println("ratings: " + ratings.userId))
-    //dsData.createOrReplaceTempView("test2.ratings_temp")
-   // dsData.show(20)
-    dsData.write.insertInto("test2.ratings_small")
+//
+//    spark.createDataFrame(dataList).createOrReplaceTempView("ratings_temp")
+//    //spark.sql("select * from ratings_temp").show()
+//    spark.sql("insert into test2.student select * from ratings_temp")
+//
+//
+//    import spark.implicits._
+//
+//    val data = List(Ratings(2, 4, 3.0, 12322343))
+//    val dsData = spark.createDataset(data)
+//    //dsData.rdd.foreach(ratings => println("ratings: " + ratings.userId))
+//    //dsData.createOrReplaceTempView("test2.ratings_temp")
+//   // dsData.show(20)
+//    dsData.write.insertInto("test2.ratings_small")
     //spark.sql("insert into test2.ratings_small select * from test2.ratings_temp")
 
 //    spark.sql("create database if not exists test")

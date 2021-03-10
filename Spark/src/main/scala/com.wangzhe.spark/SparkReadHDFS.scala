@@ -17,7 +17,7 @@ object SparkReadHDFS {
       .set("spark.yarn.jars", jars)
       //.setJars(Seq("Spark/target/Spark-1.0.jar"))
     val sc = new SparkContext(conf)
-    //sc.textFile("/sfds").count()
+    sc.textFile("/sfds").takeOrdered()
 //    sc.textFile("/data/ratings.csv").map(
 //      str => {
 //        val splits = str.split(",")

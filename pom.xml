@@ -12,6 +12,7 @@
         <module>Spark</module>
         <module>RecommendSystem</module>
         <module>Kafka</module>
+        <module>Flink</module>
     </modules>
 
     <properties>

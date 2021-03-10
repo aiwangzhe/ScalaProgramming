@@ -13,11 +13,10 @@ object SparkReadKudu {
   def main(args: Array[String]): Unit = {
     val session = SparkSession.builder().
       master("local[2]").appName("read_kudu").getOrCreate()
-    val df = session.sqlContext.read.format("csv")
-      .option("header", true).option("inferSchema", true)
-      .load("file:///home/wangzhe/文档/sfmtaAVLRawData01012013.csv")
-    df.printSchema()
-    df.createOrReplaceTempView("kudu_table")
+    val df = session.read.format("org.apache.kudu.spark.kudu").load()
+    df.show(20)
+
+
 
     val properties = new Properties()
     properties.setProperty("user","root")
@@ -41,7 +40,6 @@ object SparkReadKudu {
       session.sql("SELECT REPORT_TIME, VEHICLE_TAG, PREDICTABLE FROM kudu_table where PREDICTABLE = 1").show()
 //    session.sql("SELECT * FROM sftmta_prep LIMIT 5").show()
 //
-//    val kuduContext = new KuduContext("localhost:7051,localhost:7151,localhost:7251", session.sparkContext)
 //
 //    // Delete the table if it already exists.
 //    if(kuduContext.tableExists("sfmta_kudu")) {
