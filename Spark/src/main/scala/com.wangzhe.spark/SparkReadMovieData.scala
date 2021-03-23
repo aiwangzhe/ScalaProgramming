@@ -2,6 +2,8 @@ package com.wangzhe.spark
 
 import org.apache.spark.sql.SparkSession
 
+import org.apache.spark.sql.functions._
+
 object SparkReadMovieData {
   def main(args: Array[String]): Unit = {
     val session = SparkSession
@@ -15,9 +17,11 @@ object SparkReadMovieData {
 
     val ds = session.read.option("inferSchema", "true").option("header", "true").
       csv("file:///home/wangzhe/warehouse/movie.db/ratings/ratings.csv")
+
     ds.createOrReplaceTempView("ratings");
-    val data = session.sql("select * from ratings")
-    data.write.parquet("/data/parquet_test_ratings/")
+    val data = session.sql("select * from ratings").show()
+
+    //data.write.parquet("/data/parquet_test_ratings/")
 
 //    //session.sql("create database movie")
     //session.sql("use movie")
