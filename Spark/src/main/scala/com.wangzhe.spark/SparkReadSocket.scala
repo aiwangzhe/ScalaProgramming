@@ -11,6 +11,5 @@ object SparkReadSocket {
       .setMaster("local[4]").set("spark.sql.warehouse.dir", "/user/hive/warehouse")
     val sc = SparkContext.getOrCreate(conf)
     val streamContext = new StreamingContext(sc, Seconds(10))
-
   }
 }

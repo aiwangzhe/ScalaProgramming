@@ -13,6 +13,7 @@
         <module>RecommendSystem</module>
         <module>Kafka</module>
         <module>Flink</module>
+        <module>Click_etl</module>
     </modules>
 
     <properties>

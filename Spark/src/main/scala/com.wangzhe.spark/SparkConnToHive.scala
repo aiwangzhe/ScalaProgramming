@@ -35,7 +35,7 @@ object SparkConnToHive {
       .enableHiveSupport()
       .getOrCreate()
 
-    session.sql("create table test2.people(id Int, name string) stored as kudu")
+    session.sql("create table test10.people(id Int, name string)")
 
 ////    implicit val encoder: Encoder[Ratings] = Encoders.bean(classOf[Ratings])
 //
