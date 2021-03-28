@@ -13,7 +13,7 @@
     <artifactId>Click_etl</artifactId>
     <properties>
         <scala.version>2.11.8</scala.version>
-        <spark.version>2.3.2</spark.version>
+        <spark.version>2.4.7</spark.version>
     </properties>
 
     <repositories>
