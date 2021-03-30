@@ -219,13 +219,13 @@
 
     <property>
       <name>dfs.namenode.http-address</name>
-      <value>node1:50070</value>
+      <value>m5.leap.com:50070</value>
       <final>true</final>
     </property>
 
     <property>
       <name>dfs.namenode.https-address</name>
-      <value>node1:50470</value>
+      <value>m5.leap.com:50470</value>
     </property>
 
     <property>
@@ -241,7 +241,7 @@
 
     <property>
       <name>dfs.namenode.rpc-address</name>
-      <value>node1:8020</value>
+      <value>m5.leap.com:8020</value>
     </property>
 
     <property>

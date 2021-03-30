@@ -17,7 +17,7 @@ object ETLApp {
     //准备sparksession
     val conf = new SparkConf()
     val spark = SparkSession.builder()
-      .master("local[*]")
+      .master("local[4]")
       .config(conf).appName(ETLApp.getClass.getName).getOrCreate()
     //获取上下文
     val sc: SparkContext = spark.sparkContext
