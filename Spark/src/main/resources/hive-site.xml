@@ -1,8 +1,8 @@
 <configuration>
-<property>
-  <name>hive.metastore.uris</name>
-  <value>thrift://node2:9083</value>
-  <description>Thrift URI for the remote metastore. Used by metastore client to connect to remote metastore.</description>
-</property>
+<!--<property>-->
+<!--  <name>hive.metastore.uris</name>-->
+<!--  <value>thrift://m6.leap.com:9083</value>-->
+<!--  <description>Thrift URI for the remote metastore. Used by metastore client to connect to remote metastore.</description>-->
+<!--</property>-->
 </configuration>
 

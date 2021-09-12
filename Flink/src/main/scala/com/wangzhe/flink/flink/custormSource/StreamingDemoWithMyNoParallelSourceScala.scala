@@ -1,9 +1,9 @@
-package xuwei.tech.streaming.custormSource
+package com.wangzhe.flink.flink.custormSource
 
 import org.apache.flink.api.common.typeinfo.BasicTypeInfo
 import org.apache.flink.streaming.api.scala.StreamExecutionEnvironment
 import org.apache.flink.streaming.api.windowing.time.Time
-import org.apache.spark.sql.types.LongType
+import xuwei.tech.streaming.custormSource.MyNoParallelSourceScala
 
 /**
   * Created by xuwei.tech on 2018/10/23.

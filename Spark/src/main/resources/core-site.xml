@@ -17,7 +17,7 @@
     
     <property>
       <name>fs.defaultFS</name>
-      <value>hdfs://node1:8020</value>
+      <value>hdfs://m5.leap.com:8020</value>
       <final>true</final>
     </property>
     
@@ -48,7 +48,7 @@
     
     <property>
       <name>ha.zookeeper.quorum</name>
-      <value>node1.leap.com:2181,node2.leap.com:2181,node3.leap.com:2181</value>
+      <value>m5.leap.com:2181,m6.leap.com:2181,m7.leap.com:2181</value>
     </property>
     
     <property>

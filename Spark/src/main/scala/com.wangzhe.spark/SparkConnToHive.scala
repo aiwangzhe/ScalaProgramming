@@ -3,8 +3,10 @@ package com.wangzhe.spark
 import org.apache.commons.lang.RandomStringUtils
 import org.apache.spark.SparkContext
 import org.apache.spark.rdd.JdbcRDD
+import org.apache.spark.sql.catalyst.TableIdentifier
 import org.apache.spark.sql.{Dataset, Encoder, Encoders, SparkSession}
 
+import java.util.Properties
 import scala.collection.mutable
 import scala.util.Random
 
@@ -31,12 +33,21 @@ object SparkConnToHive {
       .appName("Spark Hive Example")
       .config("spark.sql.warehouse.dir", "/apps/hive/warehouse")
       .config("spark.driver.memory", "1024m")
+      .config("hive.metastore.uris", "thrift://m6.leap.com:9083")
       .master("local[2]")
       .enableHiveSupport()
       .getOrCreate()
+    session.sparkContext.makeRDD(List(1,2,3))
 
+    val props = new Properties()
+    //session.read.jdbc("jdbc:hive2://localhost:10000/mytest", "youtube2", props)
+    session.catalog.listTables("mytest").foreach(print(_))
+    val properties = session.sessionState.catalog.
+      getTableMetadata(TableIdentifier("youtube2", Some("mytest"))).properties
+    println(properties)
+    session.sql("show databases").show()
 
-    session.sql("select client_ip, full_request_date from test.weblogs").show()
+   // session.sql("select client_ip, full_request_date from test.weblogs").show()
     //session.sql("select userid, loginname from itcast_ods.itcast_users").show()
 
 ////    implicit val encoder: Encoder[Ratings] = Encoders.bean(classOf[Ratings])
