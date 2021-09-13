@@ -15,6 +15,8 @@
         <module>Flink</module>
         <module>Click_etl</module>
         <module>UserBehaviorAnalysis</module>
+        <module>Language</module>
+        <module>WareHouse</module>
     </modules>
 
     <properties>
